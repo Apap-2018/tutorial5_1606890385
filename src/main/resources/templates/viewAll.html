@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+  <head>
+    <object th:include="fragments/fragment :: title" th:remove ="tag"></object>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+  </head>
+
+  <body>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+
+<h3> LIST DEALER</h3>
+<div th:each="listDealer: ${listDealer}">
+			<h3 th:text= "'Nama: ' + ${listDealer.nama}"></h3>
+			<h3 th:text= "'Alamat: ' + ${listDealer.alamat}"></h3>
+			<h3 th:text="'Telepon: ' + ${listDealer.noTelp}"></h3>
+			 <table>
+    			<tr>
+        			<th scope="col">Brand</th>
+        			<th scope="col">Price</th>
+        			<th scope="col">Amount</th>
+    			</tr>
+   				<tr th:each="listCar : ${listDealer.listCar}">
+   					<td th:text="${listCar.brand}"></td>
+       				<td th:text="${listCar.price}"></td>
+       				<td th:text="${listCar.amount}"></td>
+   				</tr>
+   			</table>
+   			<br></br>
+   		</div>
+   		<td><a th:href="@{/}">Kembali ke Home</a></td>
+   		</body>
+   		</html>
+   		
+   		
+   		
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
